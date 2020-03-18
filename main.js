@@ -41,7 +41,7 @@
                     <!-- "More" button -->
                     <div class="card-footer d-flex justify-content-center">
                     <button
-                      class="btn btn-primary btn-show-user"
+                      class="btn btn-secondary btn-show-user"
                       data-toggle="modal"
                       data-target="#show-user-modal"
                       data-id="${item.id}"

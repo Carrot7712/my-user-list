@@ -21,7 +21,9 @@
     <title>Tracking List</title>
   </head>
   <body>
+    <!-- header -->
     <div class="header">
+      <!-- title area -->
       <div id="title" class="title text-center h1 pt-4">疫區入境者追蹤名單</div>
       <div id="subtitle" class="title text-center h6"><i class="fas fa-exclamation-triangle"></i><span>搜尋功能施工中...</span></div>
       
@@ -35,14 +37,15 @@
             id="search-input"
             placeholder="輸入您要追蹤的人員姓名"
           />
+          <!-- search button -->
           <button type="submit" class="btn btn-warning mb-2">Search</button>
         </form>
       </div>
     </div>
-
+ <!-- display cards -->
     <div class="container">
       <div class="row" id="data-panel">
-        <!-- print movie list here -->
+        <!-- print user cards here -->
       </div>
     </div>
 
@@ -58,8 +61,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
+            <!-- modal title -->
             <h5 class="modal-title" id="show-user-title"><strong>Tracking Details</strong></h5>
-            
+            <!-- x button -->
             <button
               type="button"
               class="close"
@@ -69,7 +73,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
+          <!-- modal body -->
           <div class="modal-body" id="show-user-body">
             <div class="row">
               <div class="col-sm-6 modal-img" id="user-avatar">
@@ -88,6 +92,7 @@
           </div>
 
           <div class="modal-footer">
+            <!-- close button -->
             <button
               type="button"
               class="btn btn-secondary"
