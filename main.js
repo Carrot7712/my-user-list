@@ -31,12 +31,12 @@
     let htmlContent = ''
     data.forEach(item => {
       htmlContent += `
-        <div class="col-sm-3">
+        <div class="col-sm-3 mt-3">
             <div class="card mb-2">
                 <img class="card-img-top " src="${item.avatar}" alt="Card image cap">
                     <div class="card-body movie-item-body text-center">
-             <h6 class="card-title user-name">${item.name}</h6>
-             <h6 class="card-content user-region">${item.region}</h6>
+             <h6 class="card-title user-name">${item.name} ${item.surname}</h6>
+             <i class="fas fa-plane"></i> <span class="card-content user-region">${item.region}</span>
                     </div>
                     <!-- "More" button -->
                     <div class="card-footer d-flex justify-content-center">
@@ -81,28 +81,28 @@
         `
         userName.textContent = `${data.name} ${data.surname}`
         userBd.innerHTML=`${data.birthday} age(${data.age})`
-        userRegion.innerHTML = `${data.region}`
-        userCreated.innerHTML = `created at ${data.created_at}`
-        userUpdated.innerHTML=`updated at ${data.updated_at}`
+        userRegion.innerHTML = `Travel from:${data.region}`
+        userEmail.innerHTML= `Contact Info:\n ${data.email}`
+        userUpdated.innerHTML=`Entry time: ${data.updated_at}`
       })
       .catch(error => console.log(error))
     //insert data into modal UI
   }
 
-  let generateModal=`
-    <div class="modal-img">
-    <img id="user-avatar" src="" alt="...">
-  </div>
-  <div class="modal-detail">
-    <ul id="show-user-information">
-      <li id="user-name">Name</li>
-      <li id="user-bd">birthday(age)</li>
-      <li id="user-region">region</li>
-      <li id="user-email">email</li>
-      <li id="user-created">created at</li>
-      <li id="user-updated">updated at</li>
-    </ul>
-  </div>
-  `
+  // let generateModal=`
+  //   <div class="modal-img">
+  //   <img id="user-avatar" src="" alt="...">
+  // </div>
+  // <div class="modal-detail">
+  //   <ul id="show-user-information">
+  //     <li id="user-name">Name</li>
+  //     <li id="user-bd">birthday(age)</li>
+  //     <li id="user-region">region</li>
+  //     <li id="user-email">email</li>
+  //     <li id="user-created">created at</li>
+  //     <li id="user-updated">updated at</li>
+  //   </ul>
+  // </div>
+  // `
 
 })()

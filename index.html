@@ -14,18 +14,36 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>My User List</title>
+    <script
+      src="https://kit.fontawesome.com/f8faf2d234.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Tracking List</title>
   </head>
   <body>
-    <header>
-      <div class="title text-center h1">My User List</div>
-    </header>
+    <div class="header">
+      <div id="title" class="title text-center h1 pt-4">疫區入境者追蹤名單</div>
+      <div id="subtitle" class="title text-center h6"><i class="fas fa-exclamation-triangle"></i><span>搜尋功能施工中...</span></div>
+      
+      <!--search bar has no function yet-->
+      <div class="row d-flex justify-content-center mt-4" id="search-bar">
+        <form id="search" class="form-inline">
+          <label class="sr-only" for="inlineFormInputName2">Name</label>
+          <input
+            type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="search-input"
+            placeholder="輸入您要追蹤的人員姓名"
+          />
+          <button type="submit" class="btn btn-warning mb-2">Search</button>
+        </form>
+      </div>
+    </div>
+
     <div class="container">
-<!-- searchingbar and other filter funtion here -->
       <div class="row" id="data-panel">
         <!-- print movie list here -->
       </div>
-
     </div>
 
     <!-- Modal -->
@@ -40,7 +58,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="show-user-title">About Me</h5>
+            <h5 class="modal-title" id="show-user-title"><strong>Tracking Details</strong></h5>
+            
             <button
               type="button"
               class="close"
@@ -52,21 +71,22 @@
           </div>
 
           <div class="modal-body" id="show-user-body">
-            <div class="modal-img" id="user-avatar">
-              <!-- user avatar -->
-            </div>
-            <div class="modal-detail">
-              <ul id="show-user-information">
-                <li id="user-name">Name</li>
-                <li id="user-bd">birthday(age)</li>
-                <li id="user-region">region</li>
-                <li id="user-email">email</li>
-                <li id="user-created">created at</li>
-                <li id="user-updated">updated at</li>
-              </ul>
+            <div class="row">
+              <div class="col-sm-6 modal-img" id="user-avatar">
+                <!-- user avatar -->
+              </div>
+              <div class="col-sm-6 modal-detail">
+                <p id="user-name">Name</p>
+                <p id="user-bd">birthday(age)</p>
+                <p id="user-region">region</p>
+                <p id="user-email">email</p>
+              </div>
+              <div class="col-sm-12 text-center mt-1" id="user-updated">
+                <p><em id="user-updated"></em></p>
+              </div>
             </div>
           </div>
-         
+
           <div class="modal-footer">
             <button
               type="button"
