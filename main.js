@@ -4,12 +4,23 @@
   const INDEX_URL = BASE_URL + 'api/v1/users/'
   //存放API進來的資料
   const data = []
+  //存放計算後當前頁面要顯示的資料
+  let pageDate
   //找元件
   const dataPanel = document.getElementById('data-panel')
-  
-  // ===============EventListeners======================
-    //透過API取得使用者資料
-    axios
+  const searchForm = document.getElementById('search')
+  const searchInput = document.getElementById('search-input')
+  const pagination = document.getElementById('pagination')
+
+  //分頁準備
+  const ITEM_PER_PAGE = 20
+  let paginationData = []
+
+  //紀錄當前顯示模式
+  let displayMode = 'card'
+
+  //透過API取得使用者資料
+  axios
     .get(INDEX_URL)
     .then(response => {
       console.log(response.data.results)
@@ -17,16 +28,18 @@
       displayCard(data)
     })
     .catch(error => console.log(error))
-
+  // ===============EventListeners======================
   //listen to data panel
-  dataPanel.addEventListener('click', function () { 
-    if (event.target.matches('.btn-show-user')) { 
-      console.log(event.target.dataset.id)
+  dataPanel.addEventListener('click', function() {
+    if (event.target.matches('.btn-show-user')) {
+      // console.log(event.target.dataset.id)
       displayModal(event.target.dataset.id)
+    }else if (event.target.classList.contains('.btn-add-fever')){
+      addFeverList(event.target.dataset.id)
     }
   })
   //===============functions======================
-//show cards
+  //show cards
   function displayCard(data) {
     let htmlContent = ''
     data.forEach(item => {
@@ -48,20 +61,22 @@
                       data-target="#show-user-modal"
                       data-id="${item.id}"
                     >More</button>
-                  
+                    <!-- favorite button --> 
+                    <button 
+                    class="btn btn-info btn-add-fever btn-sm " data-id="${item.id}">+</button>
             </div>
         </div>
         `
       dataPanel.innerHTML = htmlContent
     })
   }
-    //show modal
-  function displayModal(id) { 
+  //show modal
+  function displayModal(id) {
     //get elements
-    const userAvatar=document.getElementById('user-avatar')
+    const userAvatar = document.getElementById('user-avatar')
     const userName = document.getElementById('user-name')
     const userBd = document.getElementById('user-bd')
-    const userRegion =document.getElementById('user-region')
+    const userRegion = document.getElementById('user-region')
     const userEmail = document.getElementById('user-email')
     const userCreated = document.getElementById('user-created')
     const userUpdated = document.getElementById('user-updated')
@@ -71,7 +86,7 @@
     //send request to Show API
     axios
       .get(url)
-      .then(response => { 
+      .then(response => {
         const data = response.data
         console.log(response.data.avatar)
         //insert data into modal UI
@@ -79,29 +94,25 @@
         <img src="${data.avatar}" alt="..." class="img-fluid">
         `
         userName.textContent = `${data.name} ${data.surname}`
-        userBd.innerHTML=`${data.birthday} age(${data.age})`
+        userBd.innerHTML = `${data.birthday} age(${data.age})`
         userRegion.innerHTML = `Travel from:${data.region}`
-        userEmail.innerHTML= `Contact Info:\n ${data.email}`
-        userUpdated.innerHTML=`Entry time: ${data.updated_at}`
+        userEmail.innerHTML = `Contact Info:\n ${data.email}`
+        userUpdated.innerHTML = `Entry time: ${data.updated_at}`
       })
       .catch(error => console.log(error))
-    //insert data into modal UI
   }
 
-  // let generateModal=`
-  //   <div class="modal-img">
-  //   <img id="user-avatar" src="" alt="...">
-  // </div>
-  // <div class="modal-detail">
-  //   <ul id="show-user-information">
-  //     <li id="user-name">Name</li>
-  //     <li id="user-bd">birthday(age)</li>
-  //     <li id="user-region">region</li>
-  //     <li id="user-email">email</li>
-  //     <li id="user-created">created at</li>
-  //     <li id="user-updated">updated at</li>
-  //   </ul>
-  // </div>
-  // `
+  //增加發燒者並存在local storage
+  function addFeverList(id){
+    const list = JSON.parse(localStorage.getItem('feverUsers'))||[]
+    const user =data.find(item =>item.id === Number(id))
+    if(list.some(item=>item.id === Number(id))){
+      alert(`${user.name} ${user.surname} is already in the quarantine list.`)
+    }else{
+      list.unshift(user)
+      alert(`Added ${user.name} ${user.surname} into the quarantine list.`)
+    }
+    localStorage.setItem('feverUsers',JSON.stringify(list))
+  }
 
 })()
