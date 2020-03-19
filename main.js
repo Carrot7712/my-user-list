@@ -33,23 +33,22 @@
       htmlContent += `
         <div class="col-sm-3 mt-3">
             <div class="card mb-2">
+                <!-- card img -->
                 <img class="card-img-top " src="${item.avatar}" alt="Card image cap">
-                    <div class="card-body movie-item-body text-center">
+
+                    <!-- card body -->
+                    <div class="card-body ">
              <h6 class="card-title user-name">${item.name} ${item.surname}</h6>
              <i class="fas fa-plane"></i> <span class="card-content user-region">${item.region}</span>
                     </div>
                     <!-- "More" button -->
-                    <div class="card-footer d-flex justify-content-center">
                     <button
-                      class="btn btn-secondary btn-show-user"
+                      class="btn btn-secondary btn-sm btn-show-user"
                       data-toggle="modal"
                       data-target="#show-user-modal"
                       data-id="${item.id}"
-                    >
-                      More
-                    </button>
-                  </div>
-
+                    >More</button>
+                  
             </div>
         </div>
         `
