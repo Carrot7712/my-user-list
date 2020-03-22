@@ -4,6 +4,7 @@
 .wrapper {
   width: 100%;
   max-width: 960px;
+  min-width: 576px;
   margin: 0 auto;
 }
 .header{
@@ -28,4 +29,7 @@
   }
   .modal{
     font-family: 'Merriweather', serif;
+  }
+  .card button{
+    font-family: 'Noto Sans TC', sans-serif;
   }

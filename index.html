@@ -9,10 +9,6 @@
       integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-    />
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/f8faf2d234.js"
@@ -24,6 +20,9 @@
   <div class="wrapper">
     <!-- header -->
     <div class="header">
+      <div class="d-flex justify-content-end">
+        
+      </div>
       <!-- title area -->
       <div id="title" class="title text-center h1 pt-4">疫區入境者追蹤名單</div>
       
@@ -39,6 +38,7 @@
           />
           <!-- search button -->
           <button type="submit" class="btn btn-warning mb-2">Search</button>
+          <button type="button" id="confirmed-case" class="btn btn-danger mb-2 ml-2">看確診名單</button>
         </form>
       </div>
     </div>
@@ -76,20 +76,7 @@
           </div>
           <!-- modal body -->
           <div class="modal-body" id="show-user-body">
-            <div class="row">
-              <div class="col-sm-6 modal-img" id="user-avatar">
-                <!-- user avatar -->
-              </div>
-              <div class="col-sm-6 modal-detail">
-                <p id="user-name">Name</p>
-                <p id="user-bd">birthday(age)</p>
-                <p id="user-region">region</p>
-                <p id="user-email">email</p>
-              </div>
-              <div class="col-sm-12 text-center mt-1" id="user-updated">
-                <p><em id="user-updated"></em></p>
-              </div>
-            </div>
+            <!-- 動態新增 -->
           </div>
 
           <div class="modal-footer">
@@ -115,6 +102,7 @@
           </ul>
         </nav>
   </div>
+  <!-- scripts -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
