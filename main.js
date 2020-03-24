@@ -265,29 +265,24 @@
   //變紅
   function turnButtonRed(target) {
     // console.log(target.innerText)
-    target.classList.remove('btn-info')
-    target.classList.add('btn-danger')
+    target.classList.replace('btn-info','btn-danger')
     target.innerText = '確診!'
     
   }
   //變綠
   function turnButtonGreen(target) {
     // console.log(target.innerText)
-    target.classList.remove('btn-danger')
-    target.classList.add('btn-info')
+    target.classList.replace('btn-danger','btn-info')
     target.innerText = '加入確診名單'    
   }
 
   //控制"查看確診名單"按鈕的內容
   function changeConfirmCaseContext(target) {
-    let x=target.classList    
-    console.log('typeof target.classList:',typeof x)
-    console.log(target.classList)
+    // console.log(target.innerText)
     //是紅色
     if (target.classList.contains('btn-danger')) {
       //就不要紅色，變藍色，改字，重新渲染
-      target.classList.remove('btn-danger')
-      target.classList.add('btn-primary')
+      target.classList.replace('btn-danger','btn-primary')
       target.innerText = '看全部名單'
       showLists(myConfirmedDataList)
       //此模式下拿掉加入鈕
@@ -298,8 +293,7 @@
       //是藍色
     } else if (target.classList.contains('btn-primary')) {
       //就不要藍色，變紅色，改字，重新渲染
-      target.classList.remove('btn-primary')
-      target.classList.add('btn-danger')
+      target.classList.replace('btn-primary','btn-danger')
       target.innerText = '看確診名單'
       showLists(data)
     }
